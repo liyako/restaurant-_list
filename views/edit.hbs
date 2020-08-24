@@ -1,0 +1,44 @@
+<h1 class="mb-1 text-align restaurant-show-title">修改餐廳資訊 </h1>
+<form action="/restaurant/{{ restaurant._id }}?_method=PUT" method="POST" style="width: 50%; margin: auto">
+  <div class="form-group">
+    <label for="formGroupExampleInput">餐廳名稱</label>
+    <input type="text" class="form-control" name="name" value="{{ restaurant.name }}" id="formGroupExampleInput"
+      placeholder="Example input" required>
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">餐廳分類</label>
+    <input type="text" class="form-control" name="category" value="{{ restaurant.category }}"
+      id="formGroupExampleInput2" placeholder="Another input" required>
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">餐廳圖片</label>
+    <input type="text" class="form-control" name="image" value="{{ restaurant.image }}" id="formGroupExampleInput2"
+      placeholder="Another input">
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">餐廳地址</label>
+    <input type="text" class="form-control" name="location" value="{{ restaurant.location }}"
+      id="formGroupExampleInput2" placeholder="Another input" required>
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">餐廳電話</label>
+    <input type="text" class="form-control" name="phone" value="{{ restaurant.phone }}" id="formGroupExampleInput2"
+      placeholder="Another input" required>
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">餐廳地圖</label>
+    <input type="text" class="form-control" name="google_map" value="{{ restaurant.google_map }}"
+      id="formGroupExampleInput2" placeholder="Another input" required>
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">餐廳評價</label>
+    <input type="Number" class="form-control" name="rating" value="{{ restaurant.rating }}" id="formGroupExampleInput2"
+      placeholder="Another input" max="5" min="1" step="0.1" required>
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">餐廳資訊</label>
+    <input type="text" class="form-control" name="description" value="{{ restaurant.description }}"
+      id="formGroupExampleInput2" placeholder="Another input" required>
+  </div>
+  <button type="submit" class="btn btn-primary">確認修改</button>
+</form>

@@ -1,0 +1,75 @@
+<h1 class="mb-1 restaurant-show-title">{{ restaurant.name }}</h1>
+<div class="container">
+  <div class="button text-center">
+    <form action="/restaurant/{{ restaurant._id }}/edit" style="display: inline;">
+      <button type="submit" class="btn btn-info">修改</button>
+    </form>
+    <form action="/restaurant/{{ restaurant._id }}?_method=DELETE" method="POST" style="display: inline;">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
+        刪除
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">刪除餐廳資訊</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center">
+              刪除【{{ restaurant.name }}】此筆資料
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">確認刪除</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <a href="/"><button type="button" class="btn btn-secondary">上一頁</button></a>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-md-10 mx-auto">
+
+      <p class="mb-1">
+        <span class="text-secondary">
+          <i class="fas fa-utensils pr-2"></i>
+          類別：
+        </span>
+        {{ restaurant.category }}
+      </p>
+
+      <p class="mb-1">
+        <span class="text-secondary">
+          <i class="fas fa-map-marker-alt pr-2"></i>
+          地址：
+        </span>
+        {{ restaurant.location }}
+        <a href="{{ restaurant.google_map }}" class="text-secondary" target="_blank">
+          <i class="fas fa-location-arrow pr-2 fa-xs"></i>
+        </a>
+      </p>
+
+      <p class="mb-1">
+        <span class="text-secondary">
+          <i class="fas fa-mobile-alt pr-2"></i>
+          電話：
+        </span>
+        {{ restaurant.phone }}
+      </p>
+
+      <p class="mb-5">
+        {{ restaurant.description }}
+      </p>
+
+      <img class="rounded mx-auto d-block mb-4 w-100" src="{{ restaurant.image }}" alt="{{ restaurant.name }}"
+        style="max-width: 600px;">
+    </div>
+  </div>
+</div>
