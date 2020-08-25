@@ -9,6 +9,7 @@ router.get('/new', (req, res) => {
 })
 //新增到資料庫
 router.post('/', (req, res) => {
+  const userId = req.user._id
   const { name, category,image, rating, location, phone, google_map, description } = req.body
   const restaurant = new Restaurant_list({
     name,
@@ -18,7 +19,8 @@ router.post('/', (req, res) => {
     google_map,
     phone,
     description,
-    rating
+    rating,
+    userId
   })
   return restaurant.save()
     .then(() => res.redirect('/'))
@@ -26,25 +28,25 @@ router.post('/', (req, res) => {
 })
 //查看特定一筆資料
 router.get('/:id', (req, res) => {
-  //const userId = req.user._id
+  const userId = req.user._id
   const _id = req.params.id
-  return Restaurant_list.findOne({ _id })
+  return Restaurant_list.findOne({ _id,userId })
     .lean()
     .then(restaurant => res.render('show', { restaurant }))
-    .catch(error => res.render('error'))
+    .catch(error => console.log(error))
 })
 //資料修改頁面
 router.get('/:id/edit', (req, res) => {
-  //const userId = req.user._id
+  const userId = req.user._id
   const _id = req.params.id
-  return Restaurant_list.findOne({_id})
+  return Restaurant_list.findOne({_id,userId})
     .lean()
     .then(restaurant => res.render('edit', { restaurant }))
     .catch(error => console.log(error))
 })
 //資料修改到資料庫
 router.put('/:id', (req, res) => {
-  //const userId = req.user._id
+  const userId = req.user._id
   const _id = req.params.id
   const { name, category,image, rating, location, phone, google_map, description } = req.body
   return Restaurant_list.findOne({ _id })
@@ -57,6 +59,7 @@ router.put('/:id', (req, res) => {
       restaurant.phone = phone
       restaurant.google_map = google_map
       restaurant.description = description
+      restaurant.userId = userId
       return restaurant.save()
     })
     .then(() => res.redirect(`/restaurant/${_id}`))
@@ -64,8 +67,9 @@ router.put('/:id', (req, res) => {
 })
 //資料刪除
 router.delete('/:id', (req, res) => {
-  const id = req.params.id
-  return Restaurant_list.findById(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  return Restaurant_list.findOne({ _id, userId })
     .then(restaurant => restaurant.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))

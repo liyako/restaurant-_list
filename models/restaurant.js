@@ -41,12 +41,12 @@ const restaurantSchema = new Schema({
     type: Number,
     required: true,
   },
-/*   userId: {
+  userId: {
     type: Schema.Types.ObjectId,
     ref: 'User',
     index: true,
     required: true
-  } */
+  }
 });
 
 module.exports = mongoose.model('Restaurant', restaurantSchema);
