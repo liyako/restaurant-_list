@@ -5,12 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Restaurant List</title>
+  {{!-- include css files --}}
+  <link rel="stylesheet" href="../../public/stylesheets/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../public/stylesheets/style.css">
   <link rel="stylesheet" href="https://bootswatch.com/4/united/bootstrap.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
     integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
 </head>
 
-<body class="bg-light" >
+<body class="bg-light" background="https://cdn.pixabay.com/photo/2020/06/15/17/10/ancient-5302623_1280.jpg">
   <header class="sticky-top">
     <nav class="navbar navbar-dark bg-primary justify-content-between">
       <a class="navbar-brand" href="/">
@@ -26,9 +29,13 @@
        {{/if}}
     </nav>
   </header>
-  <div class="banner"></div>
+  <main role="main">
+      <div class="container">
+        {{{body}}}
+      </div>
+  </main>
 
-  {{{body}}}
+  {{!-- script --}}
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
     crossorigin="anonymous"></script>
@@ -38,6 +45,9 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
+    <script src="/public/javascripts/bootstrap.js"></script>
+    <script src="/public/javascripts/bootstrap.min.js"></script>
+    <script src="/public/javascripts/bootstrap.bundle.js"></script>
 </body>
 
 </html>
